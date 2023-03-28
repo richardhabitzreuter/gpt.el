@@ -1,4 +1,4 @@
-;; gpt.el --- Description -*- lexical-binding: t; -*-
+;;; gpt.el --- An Emacs package for chatting with OpenAI GPT-3 API
 ;;
 ;; Copyright (C) 2023 Richard Habitzreuter
 ;;
@@ -13,6 +13,12 @@
 ;;
 ;; This file is not part of GNU Emacs.
 
+;;; Commentary: An Emacs package for chatting with OpenAI GPT-3 API
+
+
+;;; Commentary:
+;;
+
 ;;; Code:
 
 (require 'json)
@@ -21,8 +27,9 @@
 ;;You can find your api key in https://platform.openai.com/account/api-keys
 (setq gpt-apikey "your api key goes here")
 
-;; Function to retrieve chat completions from OpenAI API
 (defun get-chat-completions-from-openai (query)
+  "Function to retrieve chat completions from OpenAI API.
+Argument QUERY."
   (let* ((url "https://api.openai.com/v1/chat/completions")
          (data (json-encode
                 `((model . "gpt-3.5-turbo")
@@ -36,21 +43,16 @@
       (goto-char url-http-end-of-headers)
       (json-read))))
 
-;; Function to parse JSON string
 (defun parse-json-string (string)
+ "Function to parse JSON. Argument STRING."
   (let ((json-object-type 'plist)
         (json-array-type 'list))
     (get-chat-completions-from-openai string)))
 
-;; Function to get content from parsed JSON
 (defun get-content-from-parsed-json (string)
+"Function to get content from parsed JSON. Argument STRING."
   (plist-get (plist-get (-first-item (plist-get (parse-json-string string) :choices)) :message) :content))
 
-;; Function to check if string is a comment
-;;(defun is-comment-string-p (string)
-;;  (string-match "^\\s-*;.*" string))
-
-;; Function to fetch ChatGPT response
 (defun fetch-chatgpt-response ()
   "Fetch ChatGPT for a response."
   (interactive)
@@ -69,3 +71,7 @@
 (provide 'gpt)
 
 ;; gpt.el ends here
+
+(provide 'gpt)
+
+;;; gpt.el ends here
