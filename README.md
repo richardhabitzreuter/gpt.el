@@ -25,3 +25,29 @@ For example, using quelpa:
 
 ```elisp
 (quelpa '(gpt :fetcher github :repo "richardhabitzreuter/gpt.el"))
+```
+
+## Usage
+
+To use gpt.el, you need to set your API key as a variable:
+
+```elisp
+(setq gpt-apikey "your api key goes here")
+```
+
+Then, you can type a message in any buffer and use the keyboard shortcut `C-c C-p C-r` to fetch a chat completion from GPT-3. The completion will be inserted after your message.
+
+For example:
+
+```
+How are you today? C-c C-p C-r
+How are you today? I'm doing well, thank you for asking.
+```
+
+You can also customize the model name and other parameters by modifying the `get-chat-completions-from-openai` function.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+
