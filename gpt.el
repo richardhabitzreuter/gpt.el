@@ -63,8 +63,6 @@
       ;; Insert content from parsed GPT JSON
       (insert (get-content-from-parsed-json text)))))
 
-""
-
 ;;Binds the function to the shortcut
 (global-set-key (kbd "C-c C-p C-r") 'fetch-chatgpt-response)
 
