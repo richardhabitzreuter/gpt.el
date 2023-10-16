@@ -70,8 +70,4 @@ Argument QUERY."
 
 (provide 'gpt)
 
-;; gpt.el ends here
-
-(provide 'gpt)
-
 ;;; gpt.el ends here
